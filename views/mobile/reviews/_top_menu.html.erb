@@ -1,0 +1,41 @@
+<% searching = @query || @category %>
+<%= content_tag :div, class: 'menu', data: {search_url: ajax_path(aloading: '.page', except: [:category_id, :order, :query, :page])} do %>
+  <ul class="menu__list">
+    <%= content_tag :li, class: "menu__item search-toggle #{'searching' if searching}" do %>
+      <i class="fa fa-search"></i>
+    <% end %>
+    <% if widget.widget_style == WidgetStyle::GALLERY %>
+      <%= content_tag :li, class: "menu__item search-toggle categories" do %>
+        <span><%= t('reviews.top_menu.show_review_per_category') %></span>
+      <% end %>
+    <% else %>
+      <li class="menu__item group-container">
+        <%= link_to ajax_path(group: @group_by == ReviewGroupBy::PRODUCT ? nil : ReviewGroupBy::PRODUCT, aloading: '.page', except: [:group, :category_id, :page, :order, :query]), remote: true, class: "toggle_button #{'active' if @group_by == ReviewGroupBy::PRODUCT}" do %>
+          <span><%= t('reviews.top_menu.show_review_per_products') %></span>
+        <% end %>
+      </li>
+    <% end %>
+    <li class="menu__item sort-container">
+      <%= select_tag :order, options_for_select(ReviewSort.collection(@brand.review_sort_types(@group_by)), @review_sort), class: 'select2 menu__select search_trigger search_field' %>
+    </li>
+  </ul>
+  <%= content_tag :div, class: "menu__search toggle-menu #{'hidden' unless searching}" do %>
+    <ul class="menu__search_list">
+      <li class="menu__search_item categories-container">
+        <%= select_tag :category_id, options_for_select(categories_collection, @category.try(:id)), prompt: category_prompt, class: 'select2 menu__select search_trigger search_field' %>
+      </li>
+      <%= content_tag :li, class: "menu__search_item search-container #{'search-container--with_query' if @query}" do %>
+        <%= text_field_tag('query', @query, class: 'search_trigger search_field', placeholder: t('reviews.top_menu.input_search_text'), autocomplete: 'off') %>
+        <button type="submit" class="search search_trigger"><%= t('reviews.label_search') %></button>
+        <a class="search-container__remove_query search_trigger">
+          <i class="fa fa-times-circle"></i>
+        </a>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if @group_by != ReviewGroupBy::PRODUCT %>
+    <div class="review_options_search_container review_options_search_container--reviews_index">
+      <%= render 'review_option_search' %>
+    </div>
+  <% end %>
+<% end %>

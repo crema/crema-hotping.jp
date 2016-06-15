@@ -1,0 +1,32 @@
+<% widget_style = WidgetStyle.key_string(widget.widget_style) %>
+<% title widget.name %>
+<%= content_for :content do %>
+  <% if no_item_action %>
+    <% if widget.no_item_action_type == 'image' %>
+      <div class="products_reviews__no_item_image_box">
+        <%= image_tag(widget.no_item_image_url, class: 'products_reviews__no_item_image') %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= render 'products/reviews/product_info' %>
+    <%= content_tag :div, class: "product_reviews_#{widget_style}" do %>
+      <% display_write_form = brand.review_writable? && display_write_form?(@product) && allow_comment? %>
+      <%= render 'products/reviews/form', display_write_form: display_write_form %>
+      <%= render 'products/reviews/summary', klass: ('without_write_form' unless display_write_form) %>
+      <% if review_option_types.present? %>
+        <div class="review_options_search_container">
+          <%= render 'reviews/review_options_search', hidden: @review_option_filter.empty?, review_option_types: review_option_types %>
+        </div>
+      <% end %>
+      <%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !product.visible_reviews?} #{'no-data' if product_reviews.total_count == 0}" do %>
+        <%= render 'products/reviews/header' %>
+        <div>
+          <%= content_tag :div, class: "widget-body product_reviews_#{widget_style}__body" do %>
+            <%= render "#{widget.base_path}/body" %>
+          <% end %>
+          <%= render "#{widget.base_path}/footer" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

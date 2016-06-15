@@ -1,0 +1,8 @@
+<div class="review_options_search_container__description">
+  私と同じ体型の人の<span class="review_options_search_container__description--strong">レビュー</span>を見る
+</div>
+<%= content_tag :div, class: 'review-options-search' do %>
+  <ul class="review_option_types">
+    <%= render review_option_types, review_option_types_count: review_option_types.count %>
+  </ul>
+<% end %>

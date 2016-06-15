@@ -1,0 +1,16 @@
+<div class="review_options_search_container__description">
+  私と同じ体型の人の<span class="review_options_search_container__description--strong">レビュー</span>を見る
+</div>
+<%= content_tag :div, class: 'review_options_search' do %>
+  <ul class="review_option_types">
+    <% review_option_types = brand.searchable_options %>
+    <% review_option_types.each do |option_type| %>
+      <%= content_tag_for :li, option_type, class: 'review_option_type' do %>
+        <div>
+          <div class="review_option_type__name"><%= option_type.name %></div>
+          <%= select_tag "option_#{option_type.id}", options_for_select(option_type.search_options, review_option_filter.value(option_type.id)), include_blank: option_type.name, class: 'select2 search_trigger search_field select_review_option', data: {width: '100%', drop_down_html: "<div class='select_review_option__drop_down'><i class='fa sort-down select_review_option__drop_down__icon'></i></div>".html_safe, keep_blank_value: true} %>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
