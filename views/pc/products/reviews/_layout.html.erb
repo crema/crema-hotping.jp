@@ -18,7 +18,7 @@
           <%= render 'reviews/review_options_search', hidden: @review_option_filter.empty?, review_option_types: review_option_types %>
         </div>
       <% end %>
-      <%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !product.visible_reviews?} #{'no-data' if product_reviews.total_count == 0}" do %>
+      <%= content_tag :div, class: "widget widget-reviews pagination-list #{'hidden' if !product.meta_visible_reviews?} #{'no-data' if product_reviews.total_count == 0}" do %>
         <%= render 'products/reviews/header' %>
         <div>
           <%= content_tag :div, class: "widget-body product_reviews_#{widget_style}__body" do %>
