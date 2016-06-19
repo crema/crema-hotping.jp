@@ -3,10 +3,10 @@
 .review-options-search {
   // FIX - IE7 dropdown z-index problem
   body.ie-7 & {
-    z-index: 1;;
+    z-index: 1;
   }
 
-  padding: 7px 0;
+  padding: 7px 0 7px 0;
   position: relative;
   margin-top: 5px;
   margin-bottom: 20px;
