@@ -1,0 +1,74 @@
+@import "../../lib/common";
+
+.review_options_search_container {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 9px;
+}
+
+.review_options_search_container--reviews_index {
+  margin-top: 0;
+  padding: 20px 0;
+  border-top: 1px solid #dadada;
+}
+
+.review_options_search_container__description {
+  font-size: 18px;
+  color: #ff00a0;
+  margin-bottom: 20px;
+}
+
+.review_options_search_container__description--strong {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff0080;
+}
+
+.review_options_search {
+  position: relative;
+}
+
+.review_option_type {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  border: 2px solid;
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.review_option_type__name {
+  margin-right: 27px;
+  padding: 3px 8px;
+}
+
+.select_review_option {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+
+  .select2-chosen {
+    display: none !important;
+  }
+}
+
+.select_review_option__drop_down {
+  height: 26px;
+  background: black;
+  width: 26px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.select_review_option__drop_down__icon {
+  font-size: 20px;
+  position: absolute;
+  top: -1px;
+  right: 6px;
+  color: white;
+}

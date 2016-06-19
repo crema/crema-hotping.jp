@@ -1,0 +1,145 @@
+@import "../../lib/common";
+
+.review-options-search {
+  // FIX - IE7 dropdown z-index problem
+  body.ie-7 & {
+    z-index: 1;
+  }
+
+  padding: 7px 0;
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  height: 15px;
+
+  ul.review_option_types {
+    @include clearfix;
+
+    li.review_option_type {
+      font-size: 21px;
+      height: 30px;
+      position: relative;
+      display: inline-block;
+      font-weight: bold;
+      border: 2px solid;
+      margin-right: 82px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a.link-review-option-type {
+        line-height: 30px;
+        display: block;
+      }
+
+      .type-name {
+        padding: 3px 15px;
+        line-height: 30px;
+        margin-right: 32px;
+      }
+
+      span.sprites-icon-drop-down-s, span.sprites-icon-drop-down-s-white {
+        position: absolute;
+        top: 12px;
+        right: 9px;
+      }
+
+      .drop_down {
+        height: 30px;
+        background: black;
+        width: 32px;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    min-width: 80px;
+    top: 27px;
+    right: 0px;
+    border: 1px solid #e1e1e1;
+    text-align: center;
+    background: white;
+    z-index: 1;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.03);
+    display: none;
+  }
+
+  ul.review_option_search_values {
+    padding: 10px 15px;
+
+    li.review_option_search_value {
+      line-height: 20px;
+      text-align: left;
+      white-space: nowrap;
+      font-size: 18px;
+    }
+  }
+
+  .search-container {
+    padding: 10px 30px 10px 10px;
+
+    input {
+      width: 80px;
+    }
+
+    .link-search {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  }
+}
+
+body.products {
+  .review-options-search {
+    margin: 0;
+    position: relative;
+    top: -6px;
+  }
+}
+
+.review-options-search-toggle {
+  position: absolute;
+  right: 0;
+  color: #949494;
+  line-height: 19px;
+  font-size: 13px;
+
+  .sprites-search {
+    padding-right: 10px;
+    position: absolute;
+    top: 3px;
+    left: -21px;
+  }
+}
+
+.review_options_search_container {
+  text-align: center;
+  margin-top: 80px;
+  padding-bottom: 45px;
+  height: 128px;
+}
+
+.review_options_search_container--reviews_index {
+  margin-top: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #dadada;
+}
+
+.review_options_search_container__description {
+  font-size: 30px;
+  color: #ff00a0;
+  margin-bottom: 35px;
+}
+
+.review_options_search_container__description--strong {
+  font-size: 42px;
+  font-weight: bold;
+  color: #ff0080;
+}
