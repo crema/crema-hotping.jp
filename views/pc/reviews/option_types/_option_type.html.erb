@@ -1,6 +1,7 @@
-<%= content_tag_for :li, option_type do %>
+<% selected_option_values = @review_option_filter.review_options[option_type.id] %>
+<%= content_tag_for :li, option_type, data: {type_name: option_type.name} do %>
   <%= content_tag :a, class: 'link-review-option-type' do %>
-    <span class="type-name"><%= option_type.name %></span>
+    <span class="type-name"><%= selected_option_values ? selected_option_values.join(',') : option_type.name %></span>
     <div class="drop_down"><span class="sprites-icon-drop-down-s-white"></span></div>
   <% end %>
   <%= content_tag :div, class: "dropdown-menu #{'nonlast-option' if review_option_types_count != option_type_counter + 1} dialog-iframe-height" do %>
