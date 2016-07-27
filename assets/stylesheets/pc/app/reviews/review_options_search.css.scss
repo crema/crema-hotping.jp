@@ -10,7 +10,6 @@
   position: relative;
   margin-top: 5px;
   margin-bottom: 20px;
-  height: 15px;
 
   ul.review_option_types {
     @include clearfix;
@@ -127,8 +126,6 @@ body.products {
 .review_options_search_container {
   text-align: center;
   margin-top: 80px;
-  padding-bottom: 45px;
-  height: 128px;
 }
 
 .review_options_search_container--reviews_index {
