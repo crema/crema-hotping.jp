@@ -10,7 +10,6 @@
   position: relative;
   margin-top: 5px;
   margin-bottom: 20px;
-  height: 15px;
 
   ul.review_option_types {
     @include clearfix;
@@ -22,7 +21,8 @@
       display: inline-block;
       font-weight: bold;
       border: 2px solid;
-      margin-right: 82px;
+      width: 30%;
+      margin: 0 0 20px 35px;
 
       &:last-child {
         margin-right: 0;
@@ -34,9 +34,13 @@
       }
 
       .type-name {
-        padding: 3px 15px;
+        padding: 0 15px;
         line-height: 30px;
         margin-right: 32px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
       }
 
       span.sprites-icon-drop-down-s, span.sprites-icon-drop-down-s-white {
@@ -122,8 +126,6 @@ body.products {
 .review_options_search_container {
   text-align: center;
   margin-top: 80px;
-  padding-bottom: 45px;
-  height: 128px;
 }
 
 .review_options_search_container--reviews_index {
