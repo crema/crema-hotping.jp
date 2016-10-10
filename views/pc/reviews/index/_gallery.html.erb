@@ -1,0 +1,29 @@
+<% title widget.name %>
+<% content_for :content do %>
+  <%= content_tag :div, class: "widget widget-reviews pagination-list" do %>
+    <div class="widget-body index-thumbnail-container">
+      <%= render 'reviews/top_menu' %>
+      <%= render 'reviews/notices' if @brand.review_show_notice_every_board %>
+      <% review_option_types = brand.searchable_options %>
+      <%= render('reviews/review_options_search', review_option_types: review_option_types) if review_option_types.present? %>
+      <div class="page">
+        <% if @reviews.empty? %>
+          <div class="no-data">
+            <%= render 'common/reviews/no_reviews' %>
+          </div>
+        <% else %>
+          <div class="reviews-contents">
+            <ul class="reviews reviews-gallery">
+              <%= render partial: 'reviews/review_thumbnail', collection: @reviews, as: 'review' %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% if @reviews.total_pages > 1 %>
+      <div class="widget-footer">
+        <%= paginate @reviews, remote: true, window: kaminari_window(params[:page].to_i, @reviews.total_pages), params: {aloading: '.page'} %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

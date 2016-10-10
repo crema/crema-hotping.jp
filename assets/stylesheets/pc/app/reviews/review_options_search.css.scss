@@ -125,10 +125,21 @@ body.products {
 
 .review_options_search_container {
   text-align: center;
-  margin-top: 80px;
+  height: 128px;
 }
 
-.review_options_search_container--reviews_index {
+.review_options_search_container--product_reviews_list {
+  padding-top: 36px;
+  padding-bottom: 89px;
+  height: 128px;
+}
+
+.review_options_search_container--reviews_gallery {
+  margin-top: 40px;
+  padding-bottom: 30px;
+}
+
+.review_options_search_container--reviews_list {
   margin-top: 40px;
   padding-bottom: 30px;
   border-bottom: 1px solid #dadada;
