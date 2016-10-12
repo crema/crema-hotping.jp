@@ -1,8 +1,11 @@
-<div class="review_options_search_container__description">
-  私と同じ体型の人の<span class="review_options_search_container__description--strong">レビュー</span>を見る
-</div>
-<%= content_tag :div, class: 'review-options-search' do %>
-  <ul class="review_option_types">
-    <%= render review_option_types, review_option_types_count: review_option_types.count %>
-  </ul>
+<% container_type = "#{WidgetType.key_string(widget.widget_type)}_#{WidgetStyle.key_string(widget.widget_style)}" %>
+<%= content_tag :div, class: "review_options_search_container review_options_search_container--#{container_type}" do %>
+  <div class="review_options_search_container__description">
+    私と同じ体型の人の<span class="review_options_search_container__description--strong">レビュー</span>を見る
+  </div>
+  <%= content_tag :div, class: 'review-options-search' do %>
+    <ul class="review_option_types">
+      <%= render review_option_types, review_option_types_count: review_option_types.count %>
+    </ul>
+  <% end %>
 <% end %>

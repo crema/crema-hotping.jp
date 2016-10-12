@@ -1,4 +1,9 @@
 <% review_option_types = brand.searchable_options %>
+<%= render(
+  'reviews/review_options_search',
+  hidden: @review_option_filter.empty?,
+  review_option_types: review_option_types
+) if review_option_types.present? %>
 <div class="products_reviews_header">
   <div class="products_reviews_header__upper">
     <span class="sort-type selected">
