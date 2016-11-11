@@ -10,7 +10,7 @@
       <%= t("products.reviews.sort_html", sort: ReviewSort.t(@review_sort), count: number_with_delimiter(product_reviews.total_count)) %>
     </span>
     <% review_sort_types.select {|r| r != @review_sort}.each do |review_sort_type| %>
-    <span class="review-sort-type-column"> | </span><%= link_to ajax_path(order: review_sort_type, aloading: '.page'), remote: true do %><span class="sort-type"><%= ReviewSort.t(review_sort_type) %></span><% end %>
+    <span class="review-sort-type-column"> | </span><%= link_to ajax_path(sort: review_sort_type, aloading: '.page'), remote: true do %><span class="sort-type"><%= ReviewSort.t(review_sort_type) %></span><% end %>
     <% end %>
   </div>
   <div class="products_reviews_header__separator"></div>
