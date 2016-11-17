@@ -1,5 +1,5 @@
 <% searching = @query || @category %>
-<%= content_tag :div, class: 'menu', data: {search_url: ajax_path(aloading: '.page', except: [:category_id, :order, :query, :page])} do %>
+<%= content_tag :div, class: 'menu', data: {search_url: ajax_path(aloading: '.page', except: [:category_id, :sort, :query, :page])} do %>
   <ul class="menu__list">
     <%= content_tag :li, class: "menu__item search-toggle #{'searching' if searching}" do %>
       <i class="fa fa-search"></i>
@@ -10,13 +10,13 @@
       <% end %>
     <% else %>
       <li class="menu__item group-container">
-        <%= link_to ajax_path(group: @group_by == ReviewGroupBy::PRODUCT ? nil : ReviewGroupBy::PRODUCT, aloading: '.page', except: [:group, :category_id, :page, :order, :query]), remote: true, class: "toggle_button #{'active' if @group_by == ReviewGroupBy::PRODUCT}" do %>
+        <%= link_to ajax_path(group: @group_by == ReviewGroupBy::PRODUCT ? nil : ReviewGroupBy::PRODUCT, aloading: '.page', except: [:group, :category_id, :page, :sort, :query]), remote: true, class: "toggle_button #{'active' if @group_by == ReviewGroupBy::PRODUCT}" do %>
           <span><%= t('reviews.top_menu.show_review_per_products') %></span>
         <% end %>
       </li>
     <% end %>
     <li class="menu__item sort-container">
-      <%= select_tag :order, options_for_select(ReviewSort.collection(@brand.review_sort_types(@group_by)), @review_sort), class: 'select2 menu__select search_trigger search_field' %>
+      <%= select_tag :sort, options_for_select(ReviewSort.collection(@brand.review_sort_types(@group_by)), @review_sort), class: 'select2 menu__select search_trigger search_field' %>
     </li>
   </ul>
   <%= content_tag :div, class: "menu__search toggle-menu #{'hidden' unless searching}" do %>

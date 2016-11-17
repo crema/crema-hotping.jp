@@ -2,7 +2,7 @@
 searchable = !brand.searchable_options.empty?
 searching = searchable && !review_option_filter.empty?
 %>
-<%= content_tag :div, class: "menu menu--margin #{'menu--no_search' unless searchable}", data: {search_url: ajax_path(aloading: '.page', except: [:order, :photo, :query, :page])} do %>
+<%= content_tag :div, class: "menu menu--margin #{'menu--no_search' unless searchable}", data: {search_url: ajax_path(aloading: '.page', except: [:sort, :photo, :query, :page])} do %>
   <ul class="menu__list">
     <% unless widget.gallery_style? %>
       <li class="menu__item group-container group-container--no_toggle_btn">
@@ -10,7 +10,7 @@ searching = searchable && !review_option_filter.empty?
       </li>
     <% end %>
     <li class="menu__item sort-container">
-      <%= select_tag :order, options_for_select(ReviewSort.collection(review_sort_types), @review_sort), class: 'select2 menu__select search_trigger search_field' %>
+      <%= select_tag :sort, options_for_select(ReviewSort.collection(review_sort_types), @review_sort), class: 'select2 menu__select search_trigger search_field' %>
     </li>
   </ul>
 <% end %>
