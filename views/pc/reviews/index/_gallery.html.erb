@@ -3,7 +3,7 @@
   <%= content_tag :div, class: "widget widget-reviews pagination-list" do %>
     <div class="widget-body index-thumbnail-container">
       <%= render 'reviews/top_menu' %>
-      <%= render 'reviews/notices' if @brand.review_show_notice_every_board %>
+      <%= render 'reviews/notices' if widget.show_notices %>
       <% review_option_types = brand.searchable_options %>
       <%= render('reviews/review_options_search', review_option_types: review_option_types) if review_option_types.present? %>
       <div class="page">
