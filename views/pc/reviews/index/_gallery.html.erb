@@ -14,7 +14,7 @@
         <% else %>
           <div class="reviews-contents">
             <ul class="reviews reviews-gallery">
-              <%= render partial: 'reviews/review_thumbnail', collection: @reviews, as: 'review' %>
+              <%= widget.render_reviews(self, reviews) %>
             </ul>
           </div>
         <% end %>
